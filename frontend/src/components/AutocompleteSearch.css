@@ -1,0 +1,207 @@
+.autocomplete-search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.autocomplete-search-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--gray-400);
+    font-size: 1.125rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.autocomplete-search-input {
+    width: 100%;
+    padding: 0.625rem 2.75rem 0.625rem 2.75rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    transition: all var(--transition-base);
+    background: var(--gray-50);
+}
+
+.autocomplete-search-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.autocomplete-search-input::placeholder {
+    color: var(--gray-400);
+}
+
+.autocomplete-clear-btn {
+    position: absolute;
+    right: 3rem;
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-base);
+}
+
+.autocomplete-clear-btn:hover {
+    background: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.autocomplete-loading-spinner {
+    position: absolute;
+    right: 1rem;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gray-200);
+    border-top-color: var(--primary-600);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    border: 1px solid var(--gray-200);
+}
+
+/* Suggestion Items */
+.autocomplete-suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.autocomplete-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-suggestion-item:hover,
+.autocomplete-suggestion-item.selected {
+    background: var(--primary-50);
+}
+
+.suggestion-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.suggestion-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.suggestion-title {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion-title mark.highlight {
+    background: none;
+    color: var(--primary-600);
+    font-weight: 700;
+}
+
+.suggestion-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+}
+
+.suggestion-category {
+    text-transform: capitalize;
+    color: var(--primary-600);
+    font-weight: 500;
+}
+
+.suggestion-separator {
+    color: var(--gray-300);
+}
+
+.suggestion-location {
+    color: var(--gray-500);
+}
+
+.suggestion-featured-badge {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+}
+
+/* No Results */
+.autocomplete-no-results {
+    padding: 2rem;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+}
+
+/* Scrollbar */
+.autocomplete-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: var(--radius-full);
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .autocomplete-dropdown {
+        max-height: 300px;
+    }
+
+    .suggestion-title {
+        font-size: 0.875rem;
+    }
+
+    .suggestion-meta {
+        font-size: 0.75rem;
+    }
+}

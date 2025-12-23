@@ -1,0 +1,123 @@
+.hero-section {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.75) 0%, rgba(147, 51, 234, 0.65) 100%),
+        url('/home-hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 8rem 0;
+    text-align: center;
+    position: relative;
+    height: 100vh;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.2;
+}
+
+.hero-title .event-word {
+    color: white;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: var(--spacing-2xl);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.featured-section,
+.categories-section,
+.upcoming-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.section-header h2 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+}
+
+.view-all-link {
+    color: var(--primary-600);
+    font-weight: 600;
+    transition: all var(--transition-base);
+}
+
+.view-all-link:hover {
+    color: var(--primary-700);
+    transform: translateX(5px);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.category-card {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.category-card h3 {
+    color: white;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+/* Hero Greeting */
+.hero-greeting {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+}
+

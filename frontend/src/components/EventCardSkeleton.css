@@ -1,0 +1,87 @@
+.event-card-skeleton {
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 220px;
+    background: var(--gray-200);
+}
+
+.skeleton-content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.skeleton-title {
+    height: 24px;
+    background: var(--gray-200);
+    border-radius: var(--radius-md);
+    width: 80%;
+}
+
+.skeleton-description {
+    height: 16px;
+    background: var(--gray-200);
+    border-radius: var(--radius-md);
+    width: 100%;
+}
+
+.skeleton-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.skeleton-meta-item {
+    height: 14px;
+    background: var(--gray-200);
+    border-radius: var(--radius-md);
+    width: 60%;
+}
+
+.skeleton-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-sm);
+}
+
+.skeleton-price {
+    height: 28px;
+    width: 80px;
+    background: var(--gray-200);
+    border-radius: var(--radius-md);
+}
+
+.skeleton-seats {
+    height: 24px;
+    width: 100px;
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(to right,
+            var(--gray-200) 0%,
+            var(--gray-300) 20%,
+            var(--gray-200) 40%,
+            var(--gray-200) 100%);
+    background-size: 1000px 100%;
+}

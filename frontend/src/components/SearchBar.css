@@ -1,0 +1,130 @@
+.search-bar-wrapper {
+    width: 100%;
+    margin: var(--spacing-xl) 0;
+}
+
+.search-bar {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    flex-wrap: wrap;
+}
+
+.search-input-group {
+    flex: 2;
+    min-width: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--gray-500);
+    font-size: 1.25rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    transition: all var(--transition-base);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--gray-400);
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.filter-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--gray-500);
+    font-size: 1.125rem;
+    pointer-events: none;
+}
+
+.filter-select,
+.filter-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-size: 0.95rem;
+    background: white;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.filter-input {
+    padding-left: 2.75rem;
+    cursor: text;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.filter-select option {
+    padding: var(--spacing-sm);
+}
+
+.clear-filters-btn {
+    padding: 0.875rem 1.5rem;
+    background: var(--error-50);
+    color: var(--error-600);
+    border: 2px solid var(--error-200);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.clear-filters-btn:hover {
+    background: var(--error-100);
+    border-color: var(--error-300);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input-group,
+    .filter-group {
+        min-width: 100%;
+    }
+
+    .clear-filters-btn {
+        justify-content: center;
+    }
+}
