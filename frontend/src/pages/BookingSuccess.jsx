@@ -77,7 +77,7 @@ const BookingSuccess = () => {
 
                             <div className="detail-item">
                                 <span className="detail-label">Total Paid</span>
-                                <span className="detail-value highlight">${booking.totalPrice}</span>
+                                <span className="detail-value highlight">₹{booking.totalPrice}</span>
                             </div>
 
                             <div className="detail-item">

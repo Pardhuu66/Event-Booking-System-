@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEvents } from '../context/EventContext';
 import { useAuth } from '../context/AuthContext';
 import { format } from 'date-fns';
-import { FiCalendar, FiMapPin, FiUsers, FiClock, FiDollarSign } from 'react-icons/fi';
+import { FiCalendar, FiMapPin, FiUsers, FiClock, FiArrowLeft, FiUser } from 'react-icons/fi';
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
+import './EventDetails.css';
 
 const EventDetails = () => {
     const { id } = useParams();
@@ -52,90 +53,118 @@ const EventDetails = () => {
     const isSoldOut = event.availableSeats === 0;
 
     return (
-        <div className="page">
+        <div className="page event-details-page">
             <div className="container">
-                <div className="event-details-page">
-                    <div className="event-image-large">
-                        <img src={event.image} alt={event.title} />
-                        {event.featured && <span className="badge badge-primary">Featured</span>}
+                {/* Hero Section */}
+                <div className="event-hero-section">
+                    <img src={event.image} alt={event.title} className="event-hero-bg" />
+                    <div className="event-hero-overlay">
+                        <Link to="/events" className="back-btn">
+                            <FiArrowLeft /> Back to Events
+                        </Link>
+
+                        <div className="event-hero-content">
+                            <div className="event-badges">
+                                <span className="hero-badge">{event.category}</span>
+                                {event.featured && <span className="hero-badge featured">✨ Featured</span>}
+                            </div>
+                            <h1 className="event-hero-title">{event.title}</h1>
+                            <div className="event-organizer-hero">
+                                <FiUser /> <span>Organized by <strong>{event.organizer}</strong></span>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div className="event-details-content">
-                        <div className="event-main-info">
-                            <span className="badge badge-secondary">{event.category}</span>
-                            <h1>{event.title}</h1>
-                            <p className="event-organizer">Organized by {event.organizer}</p>
-
-                            <div className="event-info-grid">
-                                <div className="info-item">
-                                    <FiCalendar className="info-icon" />
-                                    <div>
-                                        <strong>Date</strong>
-                                        <p>{format(new Date(event.date), 'EEEE, MMMM dd, yyyy')}</p>
-                                    </div>
+                <div className="event-content-wrapper">
+                    {/* Main Content */}
+                    <div className="event-main-info">
+                        <div className="event-info-grid">
+                            <div className="info-card">
+                                <div className="info-icon-wrapper">
+                                    <FiCalendar />
                                 </div>
-                                <div className="info-item">
-                                    <FiClock className="info-icon" />
-                                    <div>
-                                        <strong>Time</strong>
-                                        <p>{event.time}</p>
-                                    </div>
-                                </div>
-                                <div className="info-item">
-                                    <FiMapPin className="info-icon" />
-                                    <div>
-                                        <strong>Venue</strong>
-                                        <p>{event.venue}, {event.city}</p>
-                                    </div>
-                                </div>
-                                <div className="info-item">
-                                    <FiUsers className="info-icon" />
-                                    <div>
-                                        <strong>Availability</strong>
-                                        <p>{event.availableSeats} / {event.totalSeats} seats</p>
-                                    </div>
+                                <div className="info-content">
+                                    <h4>Date</h4>
+                                    <p>{format(new Date(event.date), 'EEEE, MMM dd, yyyy')}</p>
                                 </div>
                             </div>
-
-                            <div className="event-description">
-                                <h3>About This Event</h3>
-                                <p>{event.description}</p>
+                            <div className="info-card">
+                                <div className="info-icon-wrapper">
+                                    <FiClock />
+                                </div>
+                                <div className="info-content">
+                                    <h4>Time</h4>
+                                    <p>{event.time}</p>
+                                </div>
+                            </div>
+                            <div className="info-card">
+                                <div className="info-icon-wrapper">
+                                    <FiMapPin />
+                                </div>
+                                <div className="info-content">
+                                    <h4>Venue</h4>
+                                    <p>{event.venue}, {event.city}</p>
+                                </div>
+                            </div>
+                            <div className="info-card">
+                                <div className="info-icon-wrapper">
+                                    <FiUsers />
+                                </div>
+                                <div className="info-content">
+                                    <h4>Availability</h4>
+                                    <p>{event.availableSeats} / {event.totalSeats} seats</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="booking-card card">
-                            <div className="price-section">
-                                <span className="price-label">Price per ticket</span>
-                                <span className="price-value">₹{event.price}</span>
+                        <div className="event-description-box">
+                            <h3 className="section-title">About This Event</h3>
+                            <p className="description-text">{event.description}</p>
+                        </div>
+                    </div>
+
+                    {/* Booking Sidebar */}
+                    <div className="sticky-booking-sidebar">
+                        <div className="booking-card-premium">
+                            <div className="price-header">
+                                <span className="price-label">Price per person</span>
+                                <span className="price-amount">₹{event.price}</span>
                             </div>
 
-                            {!isSoldOut && (
-                                <div className="ticket-selector">
-                                    <label>Number of Tickets</label>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        max={event.availableSeats}
-                                        value={tickets}
-                                        onChange={(e) => setTickets(parseInt(e.target.value) || 1)}
-                                        className="form-input"
-                                    />
+                            {!isSoldOut ? (
+                                <>
+                                    <div className="ticket-selector-box">
+                                        <label className="ticket-label">Select Tickets</label>
+                                        <div className="ticket-control">
+                                            <input
+                                                type="number"
+                                                min="1"
+                                                max={event.availableSeats}
+                                                value={tickets}
+                                                onChange={(e) => setTickets(Math.min(Math.max(1, parseInt(e.target.value) || 1), event.availableSeats))}
+                                                className="ticket-input"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="total-row">
+                                        <span>Total Amount</span>
+                                        <span>₹{event.price * tickets}</span>
+                                    </div>
+
+                                    <button
+                                        className="btn btn-primary book-btn"
+                                        onClick={handleBookNow}
+                                    >
+                                        Book Tickets Now
+                                    </button>
+                                </>
+                            ) : (
+                                <div className="sold-out-box">
+                                    ⚠️ This event is officially sold out!
                                 </div>
                             )}
-
-                            <div className="total-price">
-                                <span>Total:</span>
-                                <span>₹{event.price * tickets}</span>
-                            </div>
-
-                            <button
-                                className={`btn ${isSoldOut ? 'btn-danger' : 'btn-primary'} btn-lg`}
-                                onClick={handleBookNow}
-                                disabled={isSoldOut}
-                                style={{ width: '100%' }}
-                            >
-                                {isSoldOut ? 'Sold Out' : 'Book Now'}
-                            </button>
                         </div>
                     </div>
                 </div>

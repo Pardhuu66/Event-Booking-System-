@@ -93,7 +93,7 @@ const FeaturedEvents = () => {
                                         </div>
                                         <div className="featured-event-footer">
                                             <span className="event-price">
-                                                {event.price === 0 ? 'Free' : `$${event.price}`}
+                                                {event.price === 0 ? 'Free' : `₹${event.price}`}
                                             </span>
                                             <span className="book-now-btn">Book Now →</span>
                                         </div>

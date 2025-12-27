@@ -113,7 +113,7 @@ const Checkout = () => {
 
     const paypalOptions = {
         'client-id': import.meta.env.VITE_PAYPAL_CLIENT_ID || 'test',
-        currency: 'USD',
+        currency: 'INR',
         intent: 'capture'
     };
 
@@ -166,7 +166,7 @@ const Checkout = () => {
                             }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--spacing-sm)' }}>
                                     <span>Price per ticket:</span>
-                                    <span>${event.price}</span>
+                                    <span>₹{event.price}</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--spacing-sm)' }}>
                                     <span>Number of tickets:</span>
@@ -183,7 +183,7 @@ const Checkout = () => {
                                     borderTop: '1px solid var(--gray-200)'
                                 }}>
                                     <span>Total Amount:</span>
-                                    <span>${totalAmount}</span>
+                                    <span>₹{totalAmount}</span>
                                 </div>
                             </div>
                         </div>

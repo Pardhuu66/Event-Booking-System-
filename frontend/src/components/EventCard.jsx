@@ -75,7 +75,7 @@ const EventCard = ({ event }) => {
                         ) : (
                             <>
                                 <span className="price-label">From</span>
-                                <span className="price-amount">${event.price}</span>
+                                <span className="price-amount">₹{event.price}</span>
                             </>
                         )}
                     </div>
