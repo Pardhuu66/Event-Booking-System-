@@ -314,10 +314,10 @@ Event Booking System/
 ### User Interface
 
 #### Home Page
-![Home Page](screenshots/home_hero.png)
+![Home Page](screenshots/featured_events.png)
 
 #### Featured Events
-![Featured Events](screenshots/featured_events.png)
+![Featured Events](screenshots/home_hero.png)
 
 #### Browse by Category
 ![Category Filter](screenshots/category_filter.png)
